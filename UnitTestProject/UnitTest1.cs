@@ -1,5 +1,8 @@
 ﻿using System;
-using ConsoleApp;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using ConsoleApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject
@@ -8,25 +11,17 @@ namespace UnitTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestaConstrutorDaClasseFabricante()
         {
-            Conta c = new Conta();
-            c.Nome = "Felipe";
-            c.Saldo = 1000;
+            ICollection<Modelo> modelos = new Collection<Modelo>();
+            modelos.Add(new Modelo { Id = 1,Name = "Enzo 411"});
+            Fabricante fab = new Fabricante(1,"Ferrari", modelos);
 
-            int res = c.ConsultaSaldo();
-
-            Assert.AreEqual(1000, res);
+            Assert.AreEqual(1, fab.Id);
+            Assert.AreEqual("Ferrari", fab.Nome);
+            
         }
 
-        [TestMethod]
-        public void TestaOConstrutorDaClasseConta()
-        {
-            string nome = "Felipe";
-            int saldo = 1911991;
-            Conta c = new Conta(nome,saldo );
-            Assert.AreEqual(nome,c.Nome);
-            Assert.AreEqual(saldo, c.Saldo);
-        }
+        
     }
 }
