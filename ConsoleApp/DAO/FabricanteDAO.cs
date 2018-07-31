@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ConsoleApp.DAO
 {
-    class Program
+    public class FabricanteDAO
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }

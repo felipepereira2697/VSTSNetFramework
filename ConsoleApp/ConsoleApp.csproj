@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conta.cs" />
+    <Compile Include="BO\FabricanteBO.cs" />
+    <Compile Include="DAO\FabricanteDAO.cs" />
+    <Compile Include="DAO\ModeloDAO.cs" />
+    <Compile Include="Model\Fabricante.cs" />
+    <Compile Include="Model\Modelo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
