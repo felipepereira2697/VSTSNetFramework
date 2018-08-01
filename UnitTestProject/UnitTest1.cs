@@ -48,9 +48,15 @@ namespace UnitTestProject
             bool vendeu = bo.VenderModelo(modelos.First(),quantidadeVendida);
 
             Assert.IsTrue(vendeu);
+        }
+        
+        //Fazer teste: NaoDeveDeixarComprarModeloSemFabricante
 
-
-
+        [TestMethod]
+        public void NaoDevePermitirCompraDeModeloComQuantidadeNegativa()
+        {
+            Modelo m = new Modelo(1, "Bmw x3", -1);
+            Assert.AreEqual(0, m.Quantidade);
         }
         
     }

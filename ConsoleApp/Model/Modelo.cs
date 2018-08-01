@@ -21,7 +21,7 @@ namespace ConsoleApp.Model
         {
             this.Id = Id;
             this.Nome = Nome;
-            this.Quantidade = Quantidade;
+            this.Quantidade = Quantidade <= 0 ? this.Quantidade = 0 : this.Quantidade = Quantidade ;
         }
     }
 }
