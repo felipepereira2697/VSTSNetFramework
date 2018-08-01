@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Linq;
+using ConsoleApp.BO;
+using ConsoleApp.DAO;
 using ConsoleApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,10 +20,28 @@ namespace UnitTestProject
             Fabricante fab = new Fabricante(1,"Ferrari", modelos);
 
             Assert.AreEqual(1, fab.Id);
-            Assert.AreEqual("Ferrari", fab.Nome);
-            
+            Assert.AreEqual("Ferrari", fab.Nome);   
         }
 
+        [TestMethod]
+        public void DevePermitirVendaDeModeloSomenteComAQuantidadeCorreta()
+        {
+            //Criar uma fabrica 
+            Fabricante fab = new Fabricante();
+            fab.Nome = "Mercedes - Benz";
+            fab.Id = 1;
+            ICollection<Modelo> modelos = new Collection<Modelo>();
+            modelos.Add(new Modelo { Name = "CLK - 180", Id = 12, Quantidade = 10 });
+
+            ModeloBO bo = new ModeloBO();
+            int quantidadeVendida = 3;
+            bool vendeu = bo.VenderModelo(modelos.First(),quantidadeVendida);
+
+            Assert.IsTrue(vendeu);
+
+
+
+        }
         
     }
 }

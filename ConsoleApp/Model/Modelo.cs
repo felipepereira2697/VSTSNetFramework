@@ -10,7 +10,7 @@ namespace ConsoleApp.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public int Quantidade { get; set; }
         //Aqui vamos facilitar o mapeamento do Entity framework 
 
         public Fabricante Fabricante { get; set; }
