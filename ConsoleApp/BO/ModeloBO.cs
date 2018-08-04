@@ -22,7 +22,7 @@ namespace ConsoleApp.BO
             return false;
         }
 
-        public List<Modelo> BuscarModeloPorNome(string nomeFabricante)
+        public List<Modelo> BuscarModelosPorNomeFabricante(string nomeFabricante)
         {
             nomeFabricante = nomeFabricante.ToUpper();
             List<Modelo> modelos = new List<Modelo>();
@@ -32,6 +32,26 @@ namespace ConsoleApp.BO
             }
 
             return modelos;
+        }
+
+        public bool VerificaExistenciaModelo(string nomeModelo)
+        {
+            if(BuscarModeloPorNome(nomeModelo) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public Modelo BuscarModeloPorNome(string nomeModelo)
+        {
+            Modelo modelo = new Modelo();
+            using (var context = new PereiraDbContext())
+            {
+                modelo = context.Modelos.Where(m => m.Nome.Equals(nomeModelo)).FirstOrDefault();
+            }
+
+            return modelo;
         }
     }
 }

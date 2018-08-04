@@ -65,13 +65,25 @@ namespace UnitTestProject
             ModeloBO bo = new ModeloBO();
             string nomeFabricante = "FERRARI";
             string nomeFabricanteMinusculo = "ferrari";
-            List<Modelo> modelos = bo.BuscarModeloPorNome(nomeFabricante);
-            List<Modelo> modelosMinusculo = bo.BuscarModeloPorNome(nomeFabricanteMinusculo);
+            List<Modelo> modelos = bo.BuscarModelosPorNomeFabricante(nomeFabricante);
+            List<Modelo> modelosMinusculo = bo.BuscarModelosPorNomeFabricante(nomeFabricanteMinusculo);
             //No minimo deve ter um modelo de ferrari
             Assert.IsTrue(modelos.Count >= 1);
             Assert.IsTrue(modelosMinusculo.Count >= 1);
             Assert.IsTrue(modelosMinusculo.Count == modelos.Count);
         }
+
+        [TestMethod]
+        public void DeveVerificarSeOModeloJaExisteNoBancoDeDadosERetornarVerdadeiro()
+        {
+            ModeloBO bo = new ModeloBO();
+            string nomeModelo = "Ferrari Enzo";
+            bool existe = bo.VerificaExistenciaModelo(nomeModelo);
+
+            Assert.IsTrue(existe);
+        }
+
+        
         
     }
 }
