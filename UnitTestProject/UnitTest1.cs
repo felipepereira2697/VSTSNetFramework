@@ -95,6 +95,19 @@ namespace UnitTestProject
 
             Assert.IsFalse(duplicou);
         }
+        [TestMethod]
+        public void NaoDeveSerPossivelAdicionarUmaQuantidadeNegativaDeModelos()
+        {
+            ModeloBO bo = new ModeloBO();
+
+            Modelo m = bo.BuscarModeloPorNome("Buggati Veyron");
+            bool adicionou = bo.AdicionarNovoModelo(m);
+
+            Assert.IsFalse(adicionou);
+
+        }
+
+        //Todo modelo deve ter um unico fabricante
         
         
     }

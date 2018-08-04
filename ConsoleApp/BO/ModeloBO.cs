@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.DAO;
 using ConsoleApp.Model;
 using ConsoleApp.Persistence;
 
@@ -10,6 +11,8 @@ namespace ConsoleApp.BO
 {
     public class ModeloBO
     {
+        private ModeloDAO dao;
+
         public bool VenderModelo(Modelo modelo, int quantidadeVendida)
         {
             if(modelo.Quantidade >= quantidadeVendida)
@@ -80,6 +83,29 @@ namespace ConsoleApp.BO
             }
 
             return false;
+            
+        }
+
+        public bool VerificaQuantidadeNegativa(int quantidade)
+        {
+            if(quantidade < 0 )
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool AdicionarNovoModelo(Modelo modelo)
+        {
+            //verificar se o modelo ja existe e se quantidade que será inserida nao é negativa
+            bool existe = VerificaExistenciaModelo(modelo.Nome);
+            bool qtdNegativa = VerificaQuantidadeNegativa(modelo.Quantidade);
+
+            if(existe || qtdNegativa)
+            {
+                return false;
+            }
+
+            return dao.Adicionar(modelo);
             
         }
     }

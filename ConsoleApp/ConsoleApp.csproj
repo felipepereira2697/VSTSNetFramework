@@ -52,6 +52,7 @@
     <Compile Include="BO\FabricanteBO.cs" />
     <Compile Include="BO\ModeloBO.cs" />
     <Compile Include="DAO\FabricanteDAO.cs" />
+    <Compile Include="DAO\IOperacoesBD.cs" />
     <Compile Include="DAO\ModeloDAO.cs" />
     <Compile Include="Migrations\201808030158026_MigracaoInicialPereiraCar.cs" />
     <Compile Include="Migrations\201808030158026_MigracaoInicialPereiraCar.Designer.cs">
