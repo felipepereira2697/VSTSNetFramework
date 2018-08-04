@@ -83,6 +83,18 @@ namespace UnitTestProject
             Assert.IsTrue(existe);
         }
 
+        //Regras de negócio para o MODELO
+        [TestMethod]
+        public void DeveVerificarQueNaoTenhaUmMesmoModeloLigadoAFabricantesDiferentes()
+        {
+            //Ferrari Enzo ligado à Ferrari e Buggati --> NÃO PERMITIDO
+            ModeloBO bo = new ModeloBO();
+            Modelo m = new Modelo();
+            //Deve buscar o modelo no banco de dados e verificar se ele está atrelado a mais de um Fabricante
+            bool duplicou = bo.VerificarDuplicidadeModelo(m);
+
+            Assert.IsFalse(duplicou);
+        }
         
         
     }

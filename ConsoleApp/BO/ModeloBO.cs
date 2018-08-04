@@ -43,6 +43,8 @@ namespace ConsoleApp.BO
             return true;
         }
 
+        
+
         public Modelo BuscarModeloPorNome(string nomeModelo)
         {
             Modelo modelo = new Modelo();
@@ -52,6 +54,33 @@ namespace ConsoleApp.BO
             }
 
             return modelo;
+        }
+
+        public List<Modelo> BuscarTodosOsModelos()
+        {
+            List<Modelo> todos = new List<Modelo>();
+            using (var context = new PereiraDbContext())
+            {
+                todos = context.Modelos.ToList();
+            }
+
+            return todos;
+        }
+
+        public bool VerificarDuplicidadeModelo(Modelo modelo)
+        {
+            List<Modelo> todos = BuscarTodosOsModelos();
+            List<Modelo> iguais = new List<Modelo>();
+            
+            iguais = todos.FindAll(x => x.Nome.Equals(modelo.Nome));
+
+            if(iguais.Count > 1)
+            {
+                return true;
+            }
+
+            return false;
+            
         }
     }
 }
