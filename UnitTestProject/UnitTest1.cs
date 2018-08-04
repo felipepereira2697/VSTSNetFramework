@@ -59,5 +59,19 @@ namespace UnitTestProject
             Assert.AreEqual(0, m.Quantidade);
         }
         
+        [TestMethod]
+        public void DeveBuscarTodosOsModelosDeFerrariNoBancoDeDados()
+        {
+            ModeloBO bo = new ModeloBO();
+            string nomeFabricante = "FERRARI";
+            string nomeFabricanteMinusculo = "ferrari";
+            List<Modelo> modelos = bo.BuscarModeloPorNome(nomeFabricante);
+            List<Modelo> modelosMinusculo = bo.BuscarModeloPorNome(nomeFabricanteMinusculo);
+            //No minimo deve ter um modelo de ferrari
+            Assert.IsTrue(modelos.Count >= 1);
+            Assert.IsTrue(modelosMinusculo.Count >= 1);
+            Assert.IsTrue(modelosMinusculo.Count == modelos.Count);
+        }
+        
     }
 }

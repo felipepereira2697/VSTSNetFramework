@@ -14,3 +14,8 @@ C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\obj\Debug\Unit
 C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\obj\Debug\UnitTestProject.csproj.CoreCompileInputs.cache
 C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\obj\Debug\UnitTestProject.dll
 C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\obj\Debug\UnitTestProject.pdb
+C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\bin\Debug\UnitTestProject.dll.config
+C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\bin\Debug\EntityFramework.dll
+C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\bin\Debug\EntityFramework.xml
+C:\Users\Felipe\source\repos\SolutionNetFramework\UnitTestProject\bin\Debug\EntityFramework.SqlServer.xml

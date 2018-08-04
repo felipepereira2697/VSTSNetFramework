@@ -5,3 +5,13 @@ C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleAp
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.exe
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\bin\Debug\EntityFramework.dll
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\bin\Debug\EntityFramework.xml
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.MigracaoInicialPereiraCar.resources
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.csproj.GenerateResource.Cache
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.FuncionarioEAlimentarDados.resources
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.PopularBancoDeDados.resources
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.AlterarIdFuncionario.resources
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.PopularFuncionarios.resources
