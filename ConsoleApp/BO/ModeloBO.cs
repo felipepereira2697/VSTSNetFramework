@@ -11,8 +11,12 @@ namespace ConsoleApp.BO
 {
     public class ModeloBO
     {
-        private ModeloDAO dao;
+        private ModeloDAO dao = new ModeloDAO();
 
+        public ModeloBO()
+        {
+            
+        }
         public bool VenderModelo(Modelo modelo, int quantidadeVendida)
         {
             if(modelo.Quantidade >= quantidadeVendida)
@@ -39,24 +43,11 @@ namespace ConsoleApp.BO
 
         public bool VerificaExistenciaModelo(string nomeModelo)
         {
-            if(BuscarModeloPorNome(nomeModelo) == null)
+            if(dao.BuscarPorNome(nomeModelo) == null)
             {
                 return false;
             }
             return true;
-        }
-
-        
-
-        public Modelo BuscarModeloPorNome(string nomeModelo)
-        {
-            Modelo modelo = new Modelo();
-            using (var context = new PereiraDbContext())
-            {
-                modelo = context.Modelos.Where(m => m.Nome.Equals(nomeModelo)).FirstOrDefault();
-            }
-
-            return modelo;
         }
 
         public List<Modelo> BuscarTodosOsModelos()

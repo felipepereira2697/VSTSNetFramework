@@ -8,44 +8,61 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.DAO
 {
-    public class ModeloDAO : IOperacoesBD
+    public class ModeloDAO : IOperacoesBD<Modelo>
     {
         public ModeloDAO()
         {
 
         }
         //CRUD da classe Modelo
-        public bool Adicionar(object o)
+        public bool Adicionar(Modelo o)
         {
             if(o == null)
             {
                 using (var context = new PereiraDbContext())
                 {
-                    context.Modelos.Add((Modelo)o);
+                    context.Modelos.Add(o);
                     return true;
                 }
             }
             return false;
         }
 
-        public bool Atualizar(object o)
+        public bool Atualizar(Modelo o)
         {
             throw new NotImplementedException();
         }
 
-        public List<object> Buscar()
+        public List<Modelo> Buscar()
         {
             throw new NotImplementedException();
         }
 
-        public object BuscarPorId()
+        public Modelo BuscarPorId()
         {
             throw new NotImplementedException();
         }
 
-        public object BuscarPorNome()
+        public Modelo BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+            Modelo modelo = new Modelo();
+            using (var context = new PereiraDbContext())
+            {
+                modelo = context.Modelos.Where(m => m.Nome.Equals(nome)).FirstOrDefault();
+            }
+
+            return modelo;
+        }
+
+        public int BuscarQuantidade(Modelo m)
+        {
+            int  quantidade = 0;
+            using (var context = new PereiraDbContext())
+            {
+                quantidade = context.Modelos.Where(x => x.Nome.Equals(m.Nome)).Select(q => q.Quantidade).First();
+            }
+
+            return quantidade;
         }
     }
 }

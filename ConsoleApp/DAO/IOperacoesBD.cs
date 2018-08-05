@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.DAO
 {
-    public interface IOperacoesBD
+    //Interface genérica para a implementação dos Cruds
+    public interface IOperacoesBD<T>
     {
-        bool Adicionar(Object o);
-        List<Object> Buscar();
-        Object BuscarPorNome();
-        Object BuscarPorId();
-        bool Atualizar(Object o);
+        bool Adicionar(T o);
+        List<T> Buscar();
+        T BuscarPorNome(string nome);
+        T BuscarPorId();
+        bool Atualizar(T o);
     }
 }

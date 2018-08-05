@@ -5,6 +5,7 @@ using System.Linq;
 using ConsoleApp.BO;
 using ConsoleApp.DAO;
 using ConsoleApp.Model;
+using ConsoleApp.Persistence;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject
@@ -98,16 +99,28 @@ namespace UnitTestProject
         [TestMethod]
         public void NaoDeveSerPossivelAdicionarUmaQuantidadeNegativaDeModelos()
         {
+            ModeloDAO dao= new ModeloDAO();
+
             ModeloBO bo = new ModeloBO();
 
-            Modelo m = bo.BuscarModeloPorNome("Buggati Veyron");
+            Modelo m = dao.BuscarPorNome("Buggati Veyron");
+
             bool adicionou = bo.AdicionarNovoModelo(m);
 
             Assert.IsFalse(adicionou);
 
-        }
 
+        }
         //Todo modelo deve ter um unico fabricante
+        [TestMethod]
+        public void DeveRetornarAQuantidadeDeUmModelo()
+        {
+            ModeloDAO dao = new ModeloDAO();
+
+            int qtd = dao.BuscarQuantidade(dao.BuscarPorNome("BMW Coupe"));
+
+            Assert.IsTrue(qtd == 50);
+        }
         
         
     }
