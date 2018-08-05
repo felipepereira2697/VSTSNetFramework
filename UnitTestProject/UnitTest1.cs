@@ -149,6 +149,8 @@ namespace UnitTestProject
             Assert.IsFalse(listasIguais);
         }
 
+        //Pendente de MOCK
+        
         [TestMethod]
         public void DeveAtualizarAQuantidadeDeUmModeloSelecionado()
         {
@@ -157,9 +159,21 @@ namespace UnitTestProject
             Modelo modelo = dao.BuscarPorNome("Audi RS6");
             //Atual era 17 vai atualizar de verdade
             modelo.Quantidade = 13;
+            
             bool atualizou = dao.Atualizar(modelo);
+            
+            Assert.IsNotNull(atualizou);
+        }
+        
 
-            Assert.IsTrue(atualizou);
+        [TestMethod]
+        public void DeveBuscarOModeloPorId()
+        {
+            ModeloDAO dao = new ModeloDAO();
+            Modelo m = dao.BuscarPorNome("BMW Coupe");
+            Modelo resultado = dao.BuscarPorId(m.Id);
+
+            Assert.AreEqual(m.Id, resultado.Id);
         }
 
 

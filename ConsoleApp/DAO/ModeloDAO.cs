@@ -68,9 +68,12 @@ namespace ConsoleApp.DAO
 
         }
 
-        public Modelo BuscarPorId()
+        public Modelo BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new PereiraDbContext())
+            {
+                return context.Modelos.Where(x => x.Id == id).First();
+            }
         }
 
         public Modelo BuscarPorNome(string nome)

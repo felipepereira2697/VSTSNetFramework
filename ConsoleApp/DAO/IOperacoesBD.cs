@@ -12,7 +12,7 @@ namespace ConsoleApp.DAO
         bool Adicionar(T o);
         List<T> Buscar();
         T BuscarPorNome(string nome);
-        T BuscarPorId();
+        T BuscarPorId(int id);
         bool Atualizar(T o);
     }
 }
