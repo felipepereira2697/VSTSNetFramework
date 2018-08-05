@@ -22,6 +22,8 @@ namespace ConsoleApp.DAO
                 using (var context = new PereiraDbContext())
                 {
                     context.Modelos.Add(o);
+                    //realizar o commit no bd
+                    context.SaveChanges();
                     return true;
                 }
             }
@@ -31,6 +33,7 @@ namespace ConsoleApp.DAO
         public bool Atualizar(Modelo o)
         {
             throw new NotImplementedException();
+            //context.SaveChanges();
         }
 
         public List<Modelo> Buscar()
@@ -50,7 +53,12 @@ namespace ConsoleApp.DAO
             {
                 modelo = context.Modelos.Where(m => m.Nome.Equals(nome)).FirstOrDefault();
             }
-
+            if(modelo == null)
+            {
+                Modelo m = new Modelo();
+                m.Nome = "";
+                return m;
+            }
             return modelo;
         }
 

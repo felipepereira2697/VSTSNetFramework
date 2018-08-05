@@ -121,7 +121,20 @@ namespace UnitTestProject
 
             Assert.IsTrue(qtd == 50);
         }
-        
-        
+
+        [TestMethod]
+        public void DeveVerificarAExistenciaDoModeloERetornarFalso()
+        {
+            ModeloDAO dao = new ModeloDAO();
+            Modelo modelo = dao.BuscarPorNome("BMW Coupe Nao Existe");
+
+            ModeloBO bo = new ModeloBO();
+            bool retornou = bo.VerificaExistenciaModelo(modelo.Nome);
+
+            Assert.IsFalse(retornou);
+
+        }
+
+
     }
 }

@@ -43,7 +43,7 @@ namespace ConsoleApp.BO
 
         public bool VerificaExistenciaModelo(string nomeModelo)
         {
-            if(dao.BuscarPorNome(nomeModelo) == null)
+            if(dao.BuscarPorNome(nomeModelo).Nome.Equals(""))
             {
                 return false;
             }
