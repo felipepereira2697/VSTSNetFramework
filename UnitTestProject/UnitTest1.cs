@@ -63,11 +63,11 @@ namespace UnitTestProject
         [TestMethod]
         public void DeveBuscarTodosOsModelosDeFerrariNoBancoDeDados()
         {
-            ModeloBO bo = new ModeloBO();
+            ModeloDAO dao = new ModeloDAO();
             string nomeFabricante = "FERRARI";
             string nomeFabricanteMinusculo = "ferrari";
-            List<Modelo> modelos = bo.BuscarModelosPorNomeFabricante(nomeFabricante);
-            List<Modelo> modelosMinusculo = bo.BuscarModelosPorNomeFabricante(nomeFabricanteMinusculo);
+            List<Modelo> modelos = dao.BuscarModelosPorNomeFabricante(nomeFabricante);
+            List<Modelo> modelosMinusculo = dao.BuscarModelosPorNomeFabricante(nomeFabricanteMinusculo);
             //No minimo deve ter um modelo de ferrari
             Assert.IsTrue(modelos.Count >= 1);
             Assert.IsTrue(modelosMinusculo.Count >= 1);
@@ -78,8 +78,10 @@ namespace UnitTestProject
         public void DeveVerificarSeOModeloJaExisteNoBancoDeDadosERetornarVerdadeiro()
         {
             ModeloBO bo = new ModeloBO();
+            ModeloDAO dao = new ModeloDAO();
             string nomeModelo = "Ferrari Enzo";
-            bool existe = bo.VerificaExistenciaModelo(nomeModelo);
+            
+            bool existe = bo.VerificaExistenciaModelo(dao.BuscarPorNome(nomeModelo));
 
             Assert.IsTrue(existe);
         }
@@ -105,7 +107,7 @@ namespace UnitTestProject
 
             Modelo m = dao.BuscarPorNome("Buggati Veyron");
 
-            bool adicionou = bo.AdicionarNovoModelo(m);
+            bool adicionou = bo.AdicionarNovoModelo(dao.BuscarPorNome("Buggati Veyron"));
 
             Assert.IsFalse(adicionou);
 
@@ -129,7 +131,7 @@ namespace UnitTestProject
             Modelo modelo = dao.BuscarPorNome("BMW Coupe Nao Existe");
 
             ModeloBO bo = new ModeloBO();
-            bool retornou = bo.VerificaExistenciaModelo(modelo.Nome);
+            bool retornou = bo.VerificaExistenciaModelo(modelo);
 
             Assert.IsFalse(retornou);
         }
@@ -176,6 +178,16 @@ namespace UnitTestProject
             Assert.AreEqual(m.Id, resultado.Id);
         }
 
+        [TestMethod]
+        public void DeveAdicionarUmaNovaFerrari()
+        {
+            Modelo ferrari = new Modelo{ Nome = "Ferrari 2018", FabricanteId = 1, Quantidade = 12 };
+            ModeloDAO dao = new ModeloDAO();
+            bool retorno = dao.Adicionar(ferrari);
+
+            Assert.IsTrue(retorno);
+
+        }
 
 
     }

@@ -17,7 +17,7 @@ namespace ConsoleApp.DAO
         //CRUD da classe Modelo
         public bool Adicionar(Modelo o)
         {
-            if(o == null)
+            if(o != null)
             {
                 using (var context = new PereiraDbContext())
                 {
@@ -28,6 +28,20 @@ namespace ConsoleApp.DAO
                 }
             }
             return false;
+        }
+
+        public List<Modelo> BuscarModelosPorNomeFabricante(string nomeFabricante)
+        {
+            nomeFabricante = nomeFabricante.ToUpper();
+            List<Modelo> modelos = new List<Modelo>();
+
+
+            using (var context = new PereiraDbContext())
+            {
+                modelos = context.Modelos.Where(x => x.Fabricante.Nome.Equals(nomeFabricante)).ToList();
+            }
+
+            return modelos;
         }
 
         public bool Atualizar(Modelo atualizado)
@@ -91,9 +105,7 @@ namespace ConsoleApp.DAO
             }
             return modelo;
         }
-
-
-
+        
         public int BuscarQuantidade(Modelo m)
         {
             int  quantidade = 0;

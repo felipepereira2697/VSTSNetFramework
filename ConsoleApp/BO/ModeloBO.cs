@@ -29,27 +29,18 @@ namespace ConsoleApp.BO
             return false;
         }
 
-        public List<Modelo> BuscarModelosPorNomeFabricante(string nomeFabricante)
-        {
-            nomeFabricante = nomeFabricante.ToUpper();
-            List<Modelo> modelos = new List<Modelo>();
-            using (var context = new PereiraDbContext())
-            {
-                modelos = context.Modelos.Where(x => x.Fabricante.Nome.Equals(nomeFabricante)).ToList();
-            }
+        
 
-            return modelos;
-        }
-
-        public bool VerificaExistenciaModelo(string nomeModelo)
+        public bool VerificaExistenciaModelo(Modelo modelo)
         {
-            if(dao.BuscarPorNome(nomeModelo).Nome.Equals(""))
+            if(dao.BuscarPorNome(modelo.Nome).Nome.Equals(""))
             {
                 return false;
             }
             return true;
         }
 
+       
         public List<Modelo> BuscarTodosOsModelos()
         {
             return dao.Buscar().OrderBy(x => x.Nome).ToList();
@@ -82,7 +73,7 @@ namespace ConsoleApp.BO
         public bool AdicionarNovoModelo(Modelo modelo)
         {
             //verificar se o modelo ja existe e se quantidade que será inserida nao é negativa
-            bool existe = VerificaExistenciaModelo(modelo.Nome);
+            bool existe = VerificaExistenciaModelo(modelo);
             bool qtdNegativa = VerificaQuantidadeNegativa(modelo.Quantidade);
 
             if(existe || qtdNegativa)
