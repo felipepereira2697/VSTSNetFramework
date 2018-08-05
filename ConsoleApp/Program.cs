@@ -30,6 +30,10 @@ namespace ConsoleApp
                     
                     break;
                 case "2":
+                    ModeloDAO dao = new ModeloDAO();
+                    Modelo  m = dao.BuscarPorNome("Audi RS6");
+                    m.Quantidade = 13;
+                    dao.Atualizar(m);
                     ModeloBO modeloBO = new ModeloBO();
                     modeloBO.ListarTodosOsModelosConsole();
 

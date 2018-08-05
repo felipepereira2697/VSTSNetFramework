@@ -147,8 +147,21 @@ namespace UnitTestProject
             bool listasIguais = todosModelosVindosDaBO.SequenceEqual(todosModelosVindosDiretoDaDAO);
 
             Assert.IsFalse(listasIguais);
-            
         }
+
+        [TestMethod]
+        public void DeveAtualizarAQuantidadeDeUmModeloSelecionado()
+        {
+         
+            ModeloDAO dao = new ModeloDAO();
+            Modelo modelo = dao.BuscarPorNome("Audi RS6");
+            //Atual era 17 vai atualizar de verdade
+            modelo.Quantidade = 13;
+            bool atualizou = dao.Atualizar(modelo);
+
+            Assert.IsTrue(atualizou);
+        }
+
 
 
     }

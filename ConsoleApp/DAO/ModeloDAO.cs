@@ -30,10 +30,31 @@ namespace ConsoleApp.DAO
             return false;
         }
 
-        public bool Atualizar(Modelo o)
+        public bool Atualizar(Modelo atualizado)
         {
-            throw new NotImplementedException();
-            //context.SaveChanges();
+            try
+            {
+                using (var context = new PereiraDbContext())
+                {
+
+                    Modelo antigo =context.Modelos.Where(m => m.Id == atualizado.Id).First();
+                    antigo.Quantidade = atualizado.Quantidade;
+                    int salvou = context.SaveChanges();
+                    if(salvou > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception )
+            {
+
+                throw;
+            }
+            
+
+            
         }
 
         public List<Modelo> Buscar()
