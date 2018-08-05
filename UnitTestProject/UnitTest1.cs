@@ -132,7 +132,22 @@ namespace UnitTestProject
             bool retornou = bo.VerificaExistenciaModelo(modelo.Nome);
 
             Assert.IsFalse(retornou);
+        }
 
+        [TestMethod]
+        public void DeveTrazerTodosOsModelosPorOrdemAlfabetica()
+        {
+            //Refatorar BO e DAO para que o main chame a BO somente uma linha
+            ModeloBO bo  = new ModeloBO();
+            ModeloDAO dao = new ModeloDAO();
+            //quando vem da dao vem tudo bagunçado
+            List<Modelo> todosModelosVindosDiretoDaDAO = dao.Buscar();
+            List<Modelo> todosModelosVindosDaBO = bo.BuscarTodosOsModelos();
+
+            bool listasIguais = todosModelosVindosDaBO.SequenceEqual(todosModelosVindosDiretoDaDAO);
+
+            Assert.IsFalse(listasIguais);
+            
         }
 
 

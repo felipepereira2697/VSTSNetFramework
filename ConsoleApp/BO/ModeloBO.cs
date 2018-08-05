@@ -52,13 +52,7 @@ namespace ConsoleApp.BO
 
         public List<Modelo> BuscarTodosOsModelos()
         {
-            List<Modelo> todos = new List<Modelo>();
-            using (var context = new PereiraDbContext())
-            {
-                todos = context.Modelos.ToList();
-            }
-
-            return todos;
+            return dao.Buscar().OrderBy(x => x.Nome).ToList();
         }
 
         public bool VerificarDuplicidadeModelo(Modelo modelo)
@@ -98,6 +92,18 @@ namespace ConsoleApp.BO
 
             return dao.Adicionar(modelo);
             
+        }
+
+        public void ListarTodosOsModelosConsole()
+        {
+            List<Modelo> modelos = BuscarTodosOsModelos();
+            Console.WriteLine("Listando todos os modelos disponiveis");
+            Console.WriteLine("-------------------------------------------------\n");
+            foreach (var item in modelos)
+            {
+                Console.WriteLine($"Nome: {item.Nome} \n\t Quantidade: {item.Quantidade} unidades\n ");
+            }
+            Console.ReadKey();
         }
     }
 }

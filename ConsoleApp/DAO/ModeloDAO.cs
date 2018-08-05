@@ -38,7 +38,13 @@ namespace ConsoleApp.DAO
 
         public List<Modelo> Buscar()
         {
-            throw new NotImplementedException();
+            List<Modelo> todos = new List<Modelo>();
+            using (var context = new PereiraDbContext())
+            {
+                todos = context.Modelos.ToList();
+            }
+            return todos;
+
         }
 
         public Modelo BuscarPorId()
@@ -61,6 +67,8 @@ namespace ConsoleApp.DAO
             }
             return modelo;
         }
+
+
 
         public int BuscarQuantidade(Modelo m)
         {
