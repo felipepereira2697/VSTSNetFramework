@@ -10,6 +10,6 @@ namespace ConsoleApp.BO
     {
         //Toda regra de negócio da Fabricante aqui
 
-        //CRUD da classe Fabricante
+        
     }
 }

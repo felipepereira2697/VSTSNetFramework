@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestProject
 {
     [TestClass]
-    public class UnitTest1
+    public class ModeloTest
     {
         [TestMethod]
         public void TestaConstrutorDaClasseFabricante()

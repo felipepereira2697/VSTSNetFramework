@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\FabricanteBO.cs" />
+    <Compile Include="BO\FuncionarioBO.cs" />
     <Compile Include="BO\ModeloBO.cs" />
     <Compile Include="DAO\FabricanteDAO.cs" />
     <Compile Include="DAO\IOperacoesBD.cs" />
