@@ -26,6 +26,7 @@ namespace UnitTestProject
          
          o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
          e 21 para o caso de gerente
+         - O nome do funcionario nao pode ter numero tbm
 
              
              */
@@ -47,20 +48,50 @@ namespace UnitTestProject
             //GregorianCalendar calendario = new GregorianCalendar();
             Random randomico = new Random();
             Funcionario f = new Funcionario();
-            f.Cargo = "Gerente";
-            f.Cpf = "42135208892";
+            f.Cargo = "Vendedor";
+            f.Cpf = "12343212345";
             f.DataContratacao = DateTime.Now;
             f.DataNascimento = new DateTime(1997,06,26);
+
+            f.Id = (randomico.Next(1, 10000)).ToString();
+            f.Nome = "Felipe Vendedor Novo";
+            f.Salario = 5000;
+
+            //Tivemos problemas ao chamar Direto a DAO quando usamos cpf invalido
+
+            //FuncionarioDAO dao = new FuncionarioDAO();
+            //bool adicionou = dao.Adicionar(f);
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool adicionou = bo.AdicionarNovoFuncionario(f);
+             
+
+            //Quero que insira no banco real
+            Assert.IsTrue(adicionou);
+        }
+
+        [TestMethod]
+        public void NaoDevePermitirAInsercaoDeFuncionarioComCpfIncorreto()
+        {
+            Random randomico = new Random();
+            Funcionario f = new Funcionario();
+            f.Cargo = "Vendedor";
+            f.Cpf = "4213cpfnaovalido892";
+            f.DataContratacao = DateTime.Now;
+            f.DataNascimento = new DateTime(1997, 06, 26);
 
             f.Id = (randomico.Next(1, 10000)).ToString();
             f.Nome = "Felipe Gerente";
             f.Salario = 7000;
 
-            FuncionarioDAO dao = new FuncionarioDAO();
-            bool adicionou = dao.Adicionar(f);
+            //Nao podemos chamar direto da DAO
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool adicionou = bo.AdicionarNovoFuncionario(f);
 
             //Quero que insira no banco real
-            Assert.IsTrue(adicionou);
+            Assert.IsFalse(adicionou);
+
         }
     }
 }
