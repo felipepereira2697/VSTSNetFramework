@@ -91,7 +91,16 @@ namespace UnitTestProject
 
             //Quero que insira no banco real
             Assert.IsFalse(adicionou);
+        }
 
+        [TestMethod]
+        public void DeveBuscarTodosOsFuncionariosComCargoDeVendedor()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            string nomeCargo = "Vendedor";
+            List<Funcionario> vendedores = bo.BuscarFuncionarioPorCargo(nomeCargo);
+
+            Assert.IsTrue(vendedores.Count > 0);
         }
     }
 }
