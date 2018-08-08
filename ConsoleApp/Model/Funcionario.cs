@@ -9,10 +9,13 @@ using System.Threading.Tasks;
 namespace ConsoleApp.Model
 {
     [Table("Funcionarios")]
+
     public class Funcionario 
     {
     
-        public int Id { get; set; }
+       
+        public string Id { get; set; }
+
 
         [Required]
         public string Nome { get; set; }
@@ -32,9 +35,10 @@ namespace ConsoleApp.Model
         {
 
         }
-        public Funcionario(string Nome, string Cpf, 
+        public Funcionario(string Id,string Nome, string Cpf, 
             DateTime DataNascimento, string Cargo, int Salario )
         {
+            this.Id = Id;
             this.Nome = Nome;
             this.Cpf = Cpf;
             this.DataNascimento = DateTime.Now ;

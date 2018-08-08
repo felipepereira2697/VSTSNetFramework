@@ -53,6 +53,7 @@
     <Compile Include="BO\FuncionarioBO.cs" />
     <Compile Include="BO\ModeloBO.cs" />
     <Compile Include="DAO\FabricanteDAO.cs" />
+    <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\IOperacoesBD.cs" />
     <Compile Include="DAO\ModeloDAO.cs" />
     <Compile Include="Migrations\201808030158026_MigracaoInicialPereiraCar.cs" />
@@ -74,6 +75,14 @@
     <Compile Include="Migrations\201808041743057_PopularFuncionarios.cs" />
     <Compile Include="Migrations\201808041743057_PopularFuncionarios.Designer.cs">
       <DependentUpon>201808041743057_PopularFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808080103254_FuncionarioIdStringToInt.cs" />
+    <Compile Include="Migrations\201808080103254_FuncionarioIdStringToInt.Designer.cs">
+      <DependentUpon>201808080103254_FuncionarioIdStringToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808080107156_FuncionarioIdString.cs" />
+    <Compile Include="Migrations\201808080107156_FuncionarioIdString.Designer.cs">
+      <DependentUpon>201808080107156_FuncionarioIdString.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Fabricante.cs" />
@@ -102,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808041743057_PopularFuncionarios.resx">
       <DependentUpon>201808041743057_PopularFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808080103254_FuncionarioIdStringToInt.resx">
+      <DependentUpon>201808080103254_FuncionarioIdStringToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808080107156_FuncionarioIdString.resx">
+      <DependentUpon>201808080107156_FuncionarioIdString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
