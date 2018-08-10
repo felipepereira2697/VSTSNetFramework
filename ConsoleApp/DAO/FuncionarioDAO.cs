@@ -51,7 +51,22 @@ namespace ConsoleApp.DAO
 
         public Funcionario BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+            using (var context = new PereiraDbContext())
+            {
+                return context.Funcionarios.Where(x => x.Nome.Equals(nome)).First();
+            }
+        }
+
+        public List<Funcionario> BuscarPorNomeECargo(string nome, string cargo)
+        {
+             
+            using (var context = new PereiraDbContext())
+            {
+                IQueryable<Funcionario> resultado = from f in context.Funcionarios
+                                                    where f.Nome.Equals(nome) && f.Cargo.Equals(cargo)
+                                                    select f;
+                return resultado.ToList();
+            }
         }
     }
 }

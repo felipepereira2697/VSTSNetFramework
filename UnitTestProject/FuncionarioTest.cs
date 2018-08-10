@@ -112,5 +112,24 @@ namespace UnitTestProject
 
             Assert.IsTrue(gerentes.Count > 0);
         }
+        [TestMethod]
+        public void BuscarFuncionarioPorNomeECargoUmFuncionarioSoPodeTerUmCargo()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            string nome = "John Lennon";
+            string cargo1 = "Vendedor";
+            string cargo2 = "Gerente";
+
+            //Nome da pessoa é unico e ela só pode ter um cargo
+            //
+            Funcionario f = bo.BuscarFuncionarioPorNomeECargo(nome, cargo1);
+            Funcionario f2 = bo.BuscarFuncionarioPorNomeECargo(nome, cargo2);
+
+            Assert.IsNull(f);
+            Assert.IsNotNull(f2);
+           
+            
+
+        }
     }
 }
