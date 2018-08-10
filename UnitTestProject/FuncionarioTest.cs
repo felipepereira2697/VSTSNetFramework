@@ -102,5 +102,15 @@ namespace UnitTestProject
 
             Assert.IsTrue(vendedores.Count > 0);
         }
+
+        [TestMethod]
+        public void DeveBuscarTodosOsFuncionariosComCargoDeGerente()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            string nomeCargo = "Gerente";
+            List<Funcionario> gerentes = bo.BuscarFuncionarioPorCargo(nomeCargo);
+
+            Assert.IsTrue(gerentes.Count > 0);
+        }
     }
 }
