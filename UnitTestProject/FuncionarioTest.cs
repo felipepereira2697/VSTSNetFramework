@@ -137,7 +137,7 @@ namespace UnitTestProject
 
             bool promovido = bo.PromoverAoCargoDeGerente(gerente,vendedor);
 
-            Assert.IsTrue(promovido);
+            Assert.IsNotNull(promovido);
             
         }
         
