@@ -103,14 +103,32 @@ namespace ConsoleApp.BO
 
         public bool PromoverAoCargoDeGerente(Funcionario gerente, Funcionario vendedor)
         {
-            vendedor.Cargo = "Gerente";
-            bool resultado = dao.Atualizar(vendedor);
-            return resultado;
+            
+            if (!vendedor.Cargo.Equals("Gerente"))
+            {
+                vendedor.Cargo = "Gerente";
+                bool resultado = dao.Atualizar(vendedor);
+                return resultado;
+            }
+            return false;
+            
         }
 
         public List<Funcionario> BuscarTodos()
         {
-            throw new NotImplementedException();
+            return dao.Buscar().OrderBy(x => x.Nome).ToList();
+        }
+
+        public void ListarTodosOsFuncionariosConsole()
+        {
+            List<Funcionario> funcionarios = BuscarTodos();
+            Console.WriteLine("Listando todos os funcionarios");
+            Console.WriteLine("-------------------------------------------------\n");
+            foreach (var item in funcionarios)
+            {
+                Console.WriteLine($"Nome: {item.Nome} \n\t Cargo: {item.Cargo}\n ");
+            }
+            Console.ReadKey();
         }
     }
 }

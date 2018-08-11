@@ -58,7 +58,13 @@ namespace ConsoleApp.DAO
 
         public List<Funcionario> Buscar()
         {
-            throw new NotImplementedException();
+            List<Funcionario> funcionarios = new List<Funcionario>();
+            using (var context = new PereiraDbContext())
+            {
+                funcionarios =  context.Funcionarios.ToList();
+
+                return funcionarios;
+            }
         }
 
         public Funcionario BuscarPorId(int id)

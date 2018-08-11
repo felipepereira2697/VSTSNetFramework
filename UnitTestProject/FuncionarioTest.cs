@@ -140,7 +140,19 @@ namespace UnitTestProject
             Assert.IsNotNull(promovido);
             
         }
-        
-        
+
+        /*
+        [TestMethod]
+        public void DeveTrazerTodosOsFuncionariosDaEmpresaEmOrdemAlfabetica()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            List<Funcionario> funcionarios = bo.BuscarTodos();
+
+            //Empresa deve ter ao menos um funcionario que é um gerente
+            Assert.IsTrue(funcionarios.Count > 1);
+
+        }
+        */
+
     }
 }
