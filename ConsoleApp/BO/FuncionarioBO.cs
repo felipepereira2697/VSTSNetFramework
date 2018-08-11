@@ -130,5 +130,10 @@ namespace ConsoleApp.BO
             }
             Console.ReadKey();
         }
+
+        public List<Funcionario> BuscarTodosOrdenandoPorCargo()
+        {
+            return dao.Buscar().OrderBy(x => x.Cargo).ToList();
+        }
     }
 }

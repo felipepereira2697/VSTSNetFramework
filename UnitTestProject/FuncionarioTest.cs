@@ -150,6 +150,17 @@ namespace UnitTestProject
 
             //Empresa deve ter ao menos um funcionario que é um gerente
             Assert.IsTrue(funcionarios.Count > 1);
+        }
+
+        [TestMethod]
+        public void DeveTrazerEOrdernarOsFuncionariosDaEmpresaPeloCargo()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            List<Funcionario> funcionarios = bo.BuscarTodosOrdenandoPorCargo();
+
+            Assert.IsTrue(funcionarios.Count > 1);
+            Assert.AreEqual("Gerente", funcionarios.First().Cargo);
+            Assert.AreEqual("Vendedor", funcionarios.Last().Cargo);
 
         }
         
