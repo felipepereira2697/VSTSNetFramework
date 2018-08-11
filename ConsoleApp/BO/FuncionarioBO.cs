@@ -107,5 +107,10 @@ namespace ConsoleApp.BO
             bool resultado = dao.Atualizar(vendedor);
             return resultado;
         }
+
+        public List<Funcionario> BuscarTodos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
