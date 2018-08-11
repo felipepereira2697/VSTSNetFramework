@@ -17,8 +17,7 @@ namespace UnitTestProject
         //Alguns Cenarios de teste
         
         /*
-         Deve Validar o cpf do funcionario verificando tbm se ja nao existe um cpf desse no banco
-         Uma pessoa só pode ter um cargo
+         
          Um gerente pode promover um vendedor ao cargo de gerente
          Somente deve existir cargo de gerente e vendedor
          Os salarios de vendedor nao devem ultrapassar os 5000
@@ -54,7 +53,7 @@ namespace UnitTestProject
             f.DataNascimento = new DateTime(1997,06,26);
 
             f.Id = (randomico.Next(1, 10000)).ToString();
-            f.Nome = "Felipe Vendedor Novo";
+            f.Nome = "Felipe Vendedor Novo"+ (randomico.Next(1, 10000)).ToString();
             f.Salario = 5000;
 
             //Tivemos problemas ao chamar Direto a DAO quando usamos cpf invalido
@@ -121,15 +120,26 @@ namespace UnitTestProject
             string cargo2 = "Gerente";
 
             //Nome da pessoa é unico e ela só pode ter um cargo
-            //
             Funcionario f = bo.BuscarFuncionarioPorNomeECargo(nome, cargo1);
             Funcionario f2 = bo.BuscarFuncionarioPorNomeECargo(nome, cargo2);
 
             Assert.IsNull(f);
             Assert.IsNotNull(f2);
            
-            
-
         }
+
+        [TestMethod]
+        public void OGerenteDevePromoverUmVendedorAGerente()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+            Funcionario vendedor = bo.BuscarFuncionarioPorNome("Felipe Vendedor Novo");
+            Funcionario gerente = bo.BuscarFuncionarioPorNome("John Lennon");
+
+            bool promovido = bo.PromoverAoCargoDeGerente(gerente,vendedor);
+
+            Assert.IsTrue(promovido);
+            
+        }
+        
     }
 }

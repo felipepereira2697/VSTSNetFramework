@@ -100,5 +100,12 @@ namespace ConsoleApp.BO
             return null;
 
         }
+
+        public bool PromoverAoCargoDeGerente(Funcionario gerente, Funcionario vendedor)
+        {
+            vendedor.Cargo = "Gerente";
+            bool resultado = dao.Atualizar(vendedor);
+            return resultado;
+        }
     }
 }

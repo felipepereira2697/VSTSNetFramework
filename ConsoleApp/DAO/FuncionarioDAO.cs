@@ -34,9 +34,26 @@ namespace ConsoleApp.DAO
             }
 
         }
+        
         public bool Atualizar(Funcionario o)
         {
-            throw new NotImplementedException();
+
+            using (var context = new PereiraDbContext())
+            {
+                Funcionario antigo = context.Funcionarios.Where(x => x.Id == o.Id).FirstOrDefault();
+                antigo.Cargo = o.Cargo;
+                antigo.Cpf = o.Cpf;
+                antigo.DataContratacao = o.DataContratacao;
+                antigo.DataNascimento = o.DataNascimento;
+                antigo.Nome = o.Nome;
+                antigo.Salario = o.Salario;
+                int salvou = context.SaveChanges();
+                if(salvou > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public List<Funcionario> Buscar()
