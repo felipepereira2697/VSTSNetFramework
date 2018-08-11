@@ -127,7 +127,7 @@ namespace UnitTestProject
             Assert.IsNotNull(f2);
            
         }
-
+        /*
         [TestMethod]
         public void OGerenteDevePromoverUmVendedorAGerente()
         {
@@ -140,8 +140,8 @@ namespace UnitTestProject
             Assert.IsNotNull(promovido);
             
         }
-
-        /*
+        */
+        
         [TestMethod]
         public void DeveTrazerTodosOsFuncionariosDaEmpresaEmOrdemAlfabetica()
         {
@@ -152,7 +152,7 @@ namespace UnitTestProject
             Assert.IsTrue(funcionarios.Count > 1);
 
         }
-        */
+        
 
     }
 }
