@@ -135,5 +135,25 @@ namespace ConsoleApp.BO
         {
             return dao.Buscar().OrderBy(x => x.Cargo).ToList();
         }
+
+        public Funcionario BuscarPorIdFuncionario(string id)
+        {
+            if(ValidarId(id))
+            {
+                int idInt = Convert.ToInt32(id);
+                return dao.BuscarPorId(idInt);
+            }
+            return new Funcionario();
+            
+        }
+
+        private static bool ValidarId(string id)
+        {
+            if(Regex.IsMatch(id, "[a-zA-Z]"))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

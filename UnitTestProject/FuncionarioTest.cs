@@ -161,6 +161,18 @@ namespace UnitTestProject
             Assert.IsTrue(funcionarios.Count > 1);
             Assert.AreEqual("Gerente", funcionarios.First().Cargo);
             Assert.AreEqual("Vendedor", funcionarios.Last().Cargo);
+        }
+
+        [TestMethod]
+        public void DeveBuscarPorIdUmFuncionario()
+        {
+            FuncionarioBO bo = new FuncionarioBO();
+
+            Funcionario  f = bo.BuscarPorIdFuncionario("1");
+            Funcionario fNome = bo.BuscarFuncionarioPorNome("John Lennon");
+
+            Assert.AreEqual(f.Id, fNome.Id);
+            Assert.AreEqual(f.Nome, fNome.Nome);
 
         }
         

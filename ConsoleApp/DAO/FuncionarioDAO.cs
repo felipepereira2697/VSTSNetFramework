@@ -69,7 +69,12 @@ namespace ConsoleApp.DAO
 
         public Funcionario BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            string idString = Convert.ToString(id);
+            using (var context = new PereiraDbContext())
+            {
+                return context.Funcionarios.Where(x => x.Id.Equals(idString)).First();
+            }
+
         }
 
         public Funcionario BuscarPorNome(string nome)
