@@ -42,6 +42,8 @@ namespace ConsoleApp.BO
             //deu problema no cpf
             return false;
         }
+
+        
         public bool ValidarIdadeFuncionario(Funcionario funcionario)
         {
             DateTime dataAtual = DateTime.Now;
@@ -167,6 +169,28 @@ namespace ConsoleApp.BO
                 return false;
             }
             return true;
+        }
+        public bool MaiorQue21(Funcionario f)
+        {
+            DateTime dataAtual = DateTime.Now.AddYears(-21);
+            if(f.DataNascimento <= dataAtual)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool AtualizarCargo(Funcionario funcionario)
+        {
+            bool atualizou = true;
+            if (MaiorQue21(funcionario))
+            {
+                atualizou = dao.AtualizarCargoParaGerente(funcionario);
+                
+            }else
+            {
+                atualizou = false;
+            }
+            return atualizou;
         }
     }
 }

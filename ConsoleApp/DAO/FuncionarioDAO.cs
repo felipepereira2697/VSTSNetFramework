@@ -96,5 +96,20 @@ namespace ConsoleApp.DAO
                 return resultado.ToList();
             }
         }
+
+        public bool AtualizarCargoParaGerente(Funcionario f)
+        {
+            using (var context = new PereiraDbContext())
+            {
+                Funcionario resultado = context.Funcionarios.Where(x => x.Nome == x.Nome && x.Cargo.Equals("Vendedor")).First();
+                resultado.Cargo = "Gerente";
+                int salvou = context.SaveChanges();
+                if(salvou > 0 )
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

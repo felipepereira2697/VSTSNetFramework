@@ -254,5 +254,44 @@ namespace UnitTestProject
             Assert.IsFalse(resMenor);
         }
 
+        [TestMethod]
+        public void AtualizarOCargoParaGerenteSomenteSeOFuncionarioJaTiverMaisDe18Anos()
+        {
+            Funcionario maior = new Funcionario();
+            Funcionario menor = new Funcionario();
+
+            Random randomico = new Random();
+
+            maior.Cargo = "Vendedor";
+            maior.Cpf = "12343212"+(randomico.Next(1,100).ToString());
+            maior.DataContratacao = DateTime.Now;
+            maior.DataNascimento = new DateTime(1985, 06, 26);
+
+            maior.Id = (randomico.Next(1, 10000)).ToString();
+            maior.Nome = "Wellison Vendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            maior.Salario = 5000;
+
+
+            menor.Cargo = "Vendedor";
+            menor.Cpf = "12343212"+(randomico.Next(1,100)).ToString();
+            menor.DataContratacao = DateTime.Now;
+            menor.DataNascimento = new DateTime(1998, 06, 26);
+
+            menor.Id = (randomico.Next(1, 10000)).ToString();
+            menor.Nome = "Teste senhor de 78 anosVendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            menor.Salario = 3000;
+
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool resMaior = bo.AdicionarNovoFuncionario(maior);
+            bool resMenor = bo.AdicionarNovoFuncionario(menor);
+
+            bool atualizouMaior = bo.AtualizarCargo(maior);
+            bool atualizouMenor = bo.AtualizarCargo(menor);
+
+            Assert.IsTrue(atualizouMaior);
+            Assert.IsFalse(atualizouMenor);
+        }
+
     }
 }
