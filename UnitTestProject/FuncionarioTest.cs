@@ -217,5 +217,42 @@ namespace UnitTestProject
 
         }
 
+        [TestMethod]
+        public void NaoDeveContratarFuncionariosMenoresQue18AnosEMaioresQue65Anos()
+        {
+            //o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
+            Funcionario maior = new Funcionario();
+            Funcionario menor = new Funcionario();
+
+            Random randomico = new Random();
+
+            maior.Cargo = "Vendedor";
+            maior.Cpf = "12343212345";
+            maior.DataContratacao = DateTime.Now;
+            maior.DataNascimento = new DateTime(1939, 06, 26);
+
+            maior.Id = (randomico.Next(1, 10000)).ToString();
+            maior.Nome = "Wellison Vendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            maior.Salario = 5000;
+
+
+            menor.Cargo = "Vendedor";
+            menor.Cpf = "12343212345";
+            menor.DataContratacao = DateTime.Now;
+            menor.DataNascimento = new DateTime(1940, 06, 26);
+
+            menor.Id = (randomico.Next(1, 10000)).ToString();
+            menor.Nome = "Teste senhor de 78 anosVendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            menor.Salario = 3000;
+
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool resMaior = bo.AdicionarNovoFuncionario(maior);
+            bool resMenor = bo.AdicionarNovoFuncionario(menor);
+
+            Assert.IsFalse(resMaior);
+            Assert.IsFalse(resMenor);
+        }
+
     }
 }

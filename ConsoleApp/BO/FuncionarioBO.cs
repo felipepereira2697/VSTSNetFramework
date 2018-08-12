@@ -46,7 +46,10 @@ namespace ConsoleApp.BO
         {
             DateTime dataAtual = DateTime.Now;
             dataAtual = dataAtual.AddYears(-18);
-            if(funcionario.DataNascimento < dataAtual)
+            DateTime maior65 = DateTime.Now;
+            maior65 = maior65.AddYears(-65);
+
+            if(funcionario.DataNascimento < dataAtual && funcionario.DataNascimento > maior65  )
             {
                 return true;
             }
