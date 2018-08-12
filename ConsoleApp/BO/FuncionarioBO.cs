@@ -11,8 +11,15 @@ namespace ConsoleApp.BO
 {
     public class FuncionarioBO
     {
+        
+        //public enum Cargos { Vendedor=1, Gerente = 2 };
+        
         private readonly FuncionarioDAO dao = new FuncionarioDAO();
 
+        public FuncionarioBO()
+        {
+        
+        }
         //Regra de negocio para a FuncionarioBO
         public bool ValidarCpf(Funcionario f)
         {
@@ -34,7 +41,7 @@ namespace ConsoleApp.BO
         public bool AdicionarNovoFuncionario(Funcionario f)
         {
 
-            if(ValidarCpf(f) && ValidarIdadeFuncionario(f))
+            if(ValidarCpf(f) && ValidarIdadeFuncionario(f) && ValidarSalarioFuncionario(f))
             {
                 
                 return dao.Adicionar(f);
@@ -43,7 +50,39 @@ namespace ConsoleApp.BO
             return false;
         }
 
-        
+        public bool ValidarSalarioFuncionario(Funcionario f)
+        {
+            bool validou = true;
+            if(f.Cargo.Equals("Vendedor"))
+            {
+                //Salario de até 5000
+                if(f.Salario <= 5000)
+                {
+                    validou = true;
+                    
+                }else
+                {
+                    validou = false;
+                }
+            }else if(f.Cargo.Equals("Gerente"))
+            {
+                if(f.Salario >= 6000 && f.Salario <= 10000)
+                {
+                    validou = true;
+                    
+                }else
+                {
+                    validou = false;
+                    
+                }
+                
+            }else
+            {
+                validou = false;
+                
+            }
+            return validou;
+        }
         public bool ValidarIdadeFuncionario(Funcionario funcionario)
         {
             DateTime dataAtual = DateTime.Now;

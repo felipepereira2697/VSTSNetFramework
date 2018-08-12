@@ -25,12 +25,7 @@ namespace UnitTestProject
          
                 gerente deve remover vendedor  --> delete
                 Ajustar code smells
-
-
-
-             o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
-             e 21 para o caso de gerente
-             
+                
              */
 
         [TestMethod]
@@ -255,7 +250,7 @@ namespace UnitTestProject
         }
 
         [TestMethod]
-        public void AtualizarOCargoParaGerenteSomenteSeOFuncionarioJaTiverMaisDe18Anos()
+        public void AtualizarOCargoParaGerenteSomenteSeOFuncionarioJaTiverMaisDe21Anos()
         {
             Funcionario maior = new Funcionario();
             Funcionario menor = new Funcionario();
@@ -293,5 +288,85 @@ namespace UnitTestProject
             Assert.IsFalse(atualizouMenor);
         }
 
+        
+        //o salario de gerente nao deve ultrapassar 10000 e nem ser abaixo de 6000
+        [TestMethod]
+        public void OsSalariosDeVendedorNaoDevemUltrapassarOs5000EOsDeGerenteNaFaixaDe6a10Mil()
+        {
+            Funcionario GerenteTetoSalarial = new Funcionario();
+            Funcionario GerentePassaTetoSalarial = new Funcionario();
+            Funcionario GerenteAbaixaTetoSalarial = new Funcionario();
+
+            Funcionario VendedorTetoSalarial = new Funcionario();
+            Funcionario VendedorPassaTetoSalarial = new Funcionario();
+           
+            
+            Random randomico = new Random();
+
+            GerenteTetoSalarial.Cargo = "Gerente";
+            GerenteTetoSalarial.Cpf = "12343212" + (randomico.Next(205, 877).ToString());
+            GerenteTetoSalarial.DataContratacao = DateTime.Now;
+            GerenteTetoSalarial.DataNascimento = new DateTime(1985, 06, 26);
+            GerenteTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
+            GerenteTetoSalarial.Nome = "Raul Gerente Teto Salarial Novo" + (randomico.Next(1, 10000)).ToString();
+            GerenteTetoSalarial.Salario = 9000;
+
+            GerentePassaTetoSalarial.Cargo = "Gerente";
+            GerentePassaTetoSalarial.Cpf = "1234321" + (randomico.Next(3000, 3877).ToString());
+            GerentePassaTetoSalarial.DataContratacao = DateTime.Now;
+            GerentePassaTetoSalarial.DataNascimento = new DateTime(1974, 04, 16);
+            GerentePassaTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
+            GerentePassaTetoSalarial.Nome = "Raul Gerente Passa Teto Salarial Novo" + (randomico.Next(1, 10000)).ToString();
+            GerentePassaTetoSalarial.Salario = 40000;
+
+
+            GerenteAbaixaTetoSalarial.Cargo = "Gerente";
+            GerenteAbaixaTetoSalarial.Cpf = "12343212" + (randomico.Next(205, 877).ToString());
+            GerenteAbaixaTetoSalarial.DataContratacao = DateTime.Now;
+            GerenteAbaixaTetoSalarial.DataNascimento = new DateTime(1985, 06, 26);
+            GerenteAbaixaTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
+            GerenteAbaixaTetoSalarial.Nome = "Raul Gerente Abaixa Teto Salarial Novo" + (randomico.Next(1, 10000)).ToString();
+            GerenteAbaixaTetoSalarial.Salario = 200;
+
+            //Os salarios de vendedor nao devem ultrapassar os 5000
+
+            VendedorTetoSalarial.Cargo = "Vendedor";
+            VendedorTetoSalarial.Cpf = "12343212" + (randomico.Next(877, 1123)).ToString();
+            VendedorTetoSalarial.DataContratacao = DateTime.Now;
+            VendedorTetoSalarial.DataNascimento = new DateTime(1998, 06, 26);
+            VendedorTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
+            VendedorTetoSalarial.Nome = "Teste Vendedor Dentro do Teto Salarial" + (randomico.Next(1, 10000)).ToString();
+            VendedorTetoSalarial.Salario = 4999;
+
+            VendedorPassaTetoSalarial.Cargo = "Vendedor";
+            VendedorPassaTetoSalarial.Cpf = "12343212" + (randomico.Next(877, 988)).ToString();
+            VendedorPassaTetoSalarial.DataContratacao = DateTime.Now;
+            VendedorPassaTetoSalarial.DataNascimento = new DateTime(1976, 06, 13);
+            VendedorPassaTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
+            VendedorPassaTetoSalarial.Nome = "Teste Vendedor Acima do Teto Salarial" + (randomico.Next(1, 10000)).ToString();
+            VendedorPassaTetoSalarial.Salario = 5001;
+
+            FuncionarioBO bo = new FuncionarioBO();
+            //false
+            bool gerentePassaTeto = bo.AdicionarNovoFuncionario(GerentePassaTetoSalarial);
+            //false
+            bool gerenteAbaixaTeto = bo.AdicionarNovoFuncionario(GerenteAbaixaTetoSalarial);
+            //true
+            bool gerenteTeto = bo.AdicionarNovoFuncionario(GerenteTetoSalarial);
+
+            //false
+            bool vendedorPassaTeto = bo.AdicionarNovoFuncionario(VendedorPassaTetoSalarial);
+            //true
+            bool vendedorTeto = bo.AdicionarNovoFuncionario(VendedorTetoSalarial);
+
+
+
+            Assert.IsTrue(gerenteTeto);
+            Assert.IsTrue(vendedorTeto);
+
+            Assert.IsFalse(gerentePassaTeto);
+            Assert.IsFalse(gerenteAbaixaTeto);
+            Assert.IsFalse(vendedorPassaTeto);
+        }
     }
 }
