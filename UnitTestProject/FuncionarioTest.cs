@@ -18,14 +18,10 @@ namespace UnitTestProject
 
         /*
          
-             Um gerente pode promover um vendedor ao cargo de gerente
-             Somente deve existir cargo de gerente e vendedor
-             Os salarios de vendedor nao devem ultrapassar os 5000
-             o salario de gerente nao deve ultrapassar 10000 e nem ser abaixo de 6000
-         
-                gerente deve remover vendedor  --> delete
-                Ajustar code smells
-                
+            Um gerente pode promover um vendedor ao cargo de gerente
+            Somente deve existir cargo de gerente e vendedor
+            gerente deve remover vendedor  --> delete
+            Ajustar code smells
              */
 
         [TestMethod]
@@ -367,6 +363,30 @@ namespace UnitTestProject
             Assert.IsFalse(gerentePassaTeto);
             Assert.IsFalse(gerenteAbaixaTeto);
             Assert.IsFalse(vendedorPassaTeto);
+        }
+        [TestMethod]
+        public void DeveExisterSomenteCargoDeVendedorEGerente()
+        {
+            Funcionario naoExiste = new Funcionario();
+            Funcionario vendedor = new Funcionario();
+            Funcionario gerente = new Funcionario();
+            Funcionario gerenteNaoExiste = new Funcionario();
+
+            naoExiste.Cargo = "Vendedor Ultra VIP";
+            vendedor.Cargo = "Vendedor";
+            gerente.Cargo = "Gerente";
+            gerenteNaoExiste.Cargo = "Gerente Ultra Mega Gerente Power User";
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool existe1 = bo.ChecarCargo(naoExiste);
+            bool existe2 = bo.ChecarCargo(vendedor);
+            bool existe3 = bo.ChecarCargo(gerente);
+            bool existe4 = bo.ChecarCargo(gerenteNaoExiste);
+
+            Assert.IsFalse(existe1);
+            Assert.IsTrue(existe2);
+            Assert.IsTrue(existe3);
+            Assert.IsFalse(existe4);
         }
     }
 }

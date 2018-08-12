@@ -231,5 +231,22 @@ namespace ConsoleApp.BO
             }
             return atualizou;
         }
+
+        public bool ChecarCargo(Funcionario funcionario)
+        {
+            bool cargoValido = true;
+            if(funcionario.Cargo.Equals("Vendedor"))
+            {
+                cargoValido =  true;
+            }
+            else if(funcionario.Cargo.Equals("Gerente"))
+            {
+                cargoValido =  true;
+            }else
+            {
+                cargoValido =  false;
+            }
+            return cargoValido;
+        }
     }
 }
