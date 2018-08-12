@@ -33,7 +33,8 @@ namespace ConsoleApp.BO
 
         public bool AdicionarNovoFuncionario(Funcionario f)
         {
-            if(ValidarCpf(f))
+
+            if(ValidarCpf(f) && ValidarIdadeFuncionario(f))
             {
                 
                 return dao.Adicionar(f);
@@ -41,7 +42,16 @@ namespace ConsoleApp.BO
             //deu problema no cpf
             return false;
         }
-
+        public bool ValidarIdadeFuncionario(Funcionario funcionario)
+        {
+            DateTime dataAtual = DateTime.Now;
+            dataAtual = dataAtual.AddYears(-18);
+            if(funcionario.DataNascimento < dataAtual)
+            {
+                return true;
+            }
+            return false;
+        }
         public Funcionario BuscarFuncionarioPorNome(string nome)
         {
             

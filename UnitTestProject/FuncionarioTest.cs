@@ -15,21 +15,24 @@ namespace UnitTestProject
     public class FuncionarioTest
     {
         //Alguns Cenarios de teste
-        
+
         /*
          
-         Um gerente pode promover um vendedor ao cargo de gerente
-         Somente deve existir cargo de gerente e vendedor
-         Os salarios de vendedor nao devem ultrapassar os 5000
-         o salario de gerente nao deve ultrapassar 10000 e nem ser abaixo de 6000
+             Um gerente pode promover um vendedor ao cargo de gerente
+             Somente deve existir cargo de gerente e vendedor
+             Os salarios de vendedor nao devem ultrapassar os 5000
+             o salario de gerente nao deve ultrapassar 10000 e nem ser abaixo de 6000
          
-         o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
-         e 21 para o caso de gerente
-         - O nome do funcionario nao pode ter numero tbm
+                gerente deve remover vendedor  --> delete
+                Ajustar code smells
 
+
+
+             o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
+             e 21 para o caso de gerente
              
              */
-         
+
         [TestMethod]
         public void DeveValidarOCpfDoFuncionario()
         {
@@ -176,6 +179,43 @@ namespace UnitTestProject
 
         }
         
+        [TestMethod]
+        public void DeveContratarFuncionariosSomenteComMaisDe18Anos()
+        {
+            //o funcionario só pode ser cadastrado caso tenha mais de 18 anos para os cargos de vendedor
+            Funcionario maior = new Funcionario();
+            Funcionario menor = new Funcionario();
+
+            Random randomico = new Random();
+            
+            maior.Cargo = "Vendedor";
+            maior.Cpf = "12343212345";
+            maior.DataContratacao = DateTime.Now;
+            maior.DataNascimento = new DateTime(1997, 06, 26);
+
+            maior.Id = (randomico.Next(1, 10000)).ToString();
+            maior.Nome = "Wellison Vendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            maior.Salario = 5000;
+
+
+            menor.Cargo = "Vendedor";
+            menor.Cpf = "12343212345";
+            menor.DataContratacao = DateTime.Now;
+            menor.DataNascimento = new DateTime(2015, 06, 26);
+
+            menor.Id = (randomico.Next(1, 10000)).ToString();
+            menor.Nome = "Wellison Vendedor Novo" + (randomico.Next(1, 10000)).ToString();
+            menor.Salario = 3000;
+
+
+            FuncionarioBO bo = new FuncionarioBO();
+            bool resMaior = bo.AdicionarNovoFuncionario(maior);
+            bool resMenor = bo.AdicionarNovoFuncionario(menor);
+
+            Assert.IsTrue(resMaior);
+            Assert.IsFalse(resMenor);
+
+        }
 
     }
 }
