@@ -1,4 +1,5 @@
 ﻿using ConsoleApp.Model;
+using ConsoleApp.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,10 @@ namespace ConsoleApp.DAO
 
         public List<Fabricante> Buscar()
         {
-            throw new NotImplementedException();
+            using (var context = new PereiraDbContext())
+            {
+                return context.Fabricantes.ToList();
+            }
         }
 
         public Fabricante BuscarPorId(int id)

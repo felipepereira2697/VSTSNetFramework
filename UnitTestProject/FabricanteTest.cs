@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ConsoleApp.BO;
+using ConsoleApp.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,12 @@ namespace UnitTestProject
     public class FabricanteTest
     {
         [TestMethod]
-        public void DeveExecutarUmaRegraDeNegocioDeFabricante()
+        public void DeveBuscarTodosOsFabricantesEmOrdemAlfabetica()
         {
+            FabricanteBO bo = new FabricanteBO();
+            List<Fabricante> todos = new List<Fabricante>();
+            todos = bo.BuscarTodos();
+            Assert.IsTrue(todos.Count > 1);
         }
     }
 }

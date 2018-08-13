@@ -62,13 +62,29 @@ namespace ConsoleApp.BO
             
         }
 
+        public void RecolherDadosParaAdicionarModeloViaConsole()
+        {
+            Console.WriteLine("Opa, mais um modelo chegando quentinho para a PereiraCAR\n");
+            Console.WriteLine("Digite o nome do modelo\n");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Digite a quantidade de "+nome+"\n");
+            string qtd = Console.ReadLine();
+
+            Modelo m = new Modelo { Nome = nome, Quantidade = Convert.ToInt32(qtd) };
+            if(AdicionarNovoModelo(m))
+            {
+                Console.WriteLine("Conseguimos adicionar o modelo "+m.Nome+" ao nosso catalogo");
+            }
+            Console.ReadKey();
+        }
+
         public bool VerificaQuantidadeNegativa(int quantidade)
         {
             if(quantidade < 0 )
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
         public bool AdicionarNovoModelo(Modelo modelo)
         {

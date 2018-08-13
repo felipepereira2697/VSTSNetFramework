@@ -121,6 +121,7 @@ namespace ConsoleApp.BO
             {
                 Console.WriteLine("Desculpe-nos o transtorno, favor contactar o seu administrador de sistema");
             }
+            Console.ReadKey();
         }
 
         public bool ValidarIdadeFuncionario(Funcionario funcionario)

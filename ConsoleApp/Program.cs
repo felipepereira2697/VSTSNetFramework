@@ -23,22 +23,19 @@ namespace ConsoleApp
                 " 4 - Adicionar um novo funcionário\n 5 - Adicionar um novo modelo\n 0 - Sair");
             string op = Console.ReadLine();
             FuncionarioBO funcBO = new FuncionarioBO();
-            switch(op)
+            ModeloBO modeloBO = new ModeloBO();
+            FabricanteBO bo = new FabricanteBO();
+            switch (op)
             {
 
                 case "1":
-                    Console.WriteLine("Listando os fabricantes...\n");
-                    Console.WriteLine("-----------------------------\n");
-                    
+                    bo.ListarTodosOsFabricantesConsole();
                     break;
                 case "2":
-                    
-                    ModeloBO modeloBO = new ModeloBO();
                     modeloBO.ListarTodosOsModelosConsole();
-
                     break;
 
-                case "3":
+                case "3":   
                     funcBO.ListarTodosOsFuncionariosConsole();
                     break;
 
@@ -46,7 +43,9 @@ namespace ConsoleApp
                     funcBO.RecolherDadosConsole();
                     break;
 
-                
+                case "5":
+                    modeloBO.RecolherDadosParaAdicionarModeloViaConsole();
+                    break;
                 case "0":
                     Console.WriteLine("Fechando o sistema...\n");
                     Console.WriteLine("-----------------------------\n");
