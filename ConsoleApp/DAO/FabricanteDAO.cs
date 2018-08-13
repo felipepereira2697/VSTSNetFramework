@@ -12,7 +12,16 @@ namespace ConsoleApp.DAO
     {
         public bool Adicionar(Fabricante o)
         {
-            throw new NotImplementedException();
+            using (var context = new PereiraDbContext())
+            {
+                context.Fabricantes.Add(o);
+                int salvou = context.SaveChanges();
+                if(salvou > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public bool Atualizar(Fabricante o)

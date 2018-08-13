@@ -62,15 +62,21 @@ namespace ConsoleApp.BO
             
         }
 
-        public void RecolherDadosParaAdicionarModeloViaConsole()
+        public void RecolherDadosParaAdicionarModeloViaConsole(FabricanteBO fabBO)
         {
+            
             Console.WriteLine("Opa, mais um modelo chegando quentinho para a PereiraCAR\n");
             Console.WriteLine("Digite o nome do modelo\n");
             string nome = Console.ReadLine();
             Console.WriteLine("Digite a quantidade de "+nome+"\n");
             string qtd = Console.ReadLine();
 
-            Modelo m = new Modelo { Nome = nome, Quantidade = Convert.ToInt32(qtd) };
+            fabBO.ListarTodosOsFabricantesConsole();
+
+            Console.WriteLine("Digite o Id do fabricante desse modelo: \n");
+            string idFabricante = Console.ReadLine();
+            
+            Modelo m = new Modelo { Nome = nome, Quantidade = Convert.ToInt32(qtd), FabricanteId = Convert.ToInt32(idFabricante) };
             if(AdicionarNovoModelo(m))
             {
                 Console.WriteLine("Conseguimos adicionar o modelo "+m.Nome+" ao nosso catalogo");

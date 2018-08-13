@@ -29,6 +29,10 @@ namespace ConsoleApp.Model
             this.Nome = Name;
             this.Modelos = Modelos;
         }
-
+        public Fabricante(int Id, string Nome)
+        {
+            this.Id = Id;
+            this.Nome = Nome;
+        }
     }
 }

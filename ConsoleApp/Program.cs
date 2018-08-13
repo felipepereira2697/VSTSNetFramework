@@ -44,7 +44,7 @@ namespace ConsoleApp
                     break;
 
                 case "5":
-                    modeloBO.RecolherDadosParaAdicionarModeloViaConsole();
+                    modeloBO.RecolherDadosParaAdicionarModeloViaConsole(bo);
                     break;
                 case "0":
                     Console.WriteLine("Fechando o sistema...\n");

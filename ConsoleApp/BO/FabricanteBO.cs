@@ -28,5 +28,27 @@ namespace ConsoleApp.BO
             }
             Console.ReadKey();
         }
+
+        public bool VerificarExistenciaFabricante(Fabricante f)
+        {
+            List<Fabricante> fabricantes = BuscarTodos();
+            Fabricante existente = fabricantes.Where(x => x.Nome.Equals(f.Nome)).FirstOrDefault();
+            if(existente == null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool AdicionarNovoFabricante(Fabricante f)
+        {
+            //checar se ja nao existe
+            if(VerificarExistenciaFabricante(f))
+            {
+                f.Nome = f.Nome.ToUpper();
+                return dao.Adicionar(f);
+
+            }
+            return false;
+        }
     }
 }
