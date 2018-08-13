@@ -41,9 +41,10 @@ namespace ConsoleApp.Model
             this.Id = Id;
             this.Nome = Nome;
             this.Cpf = Cpf;
-            this.DataNascimento = DateTime.Now ;
+            this.DataNascimento = DataNascimento ;
             this.Cargo = Cargo;
             this.Salario = Salario;
+            this.DataContratacao = DateTime.Now;
         }
         
     }

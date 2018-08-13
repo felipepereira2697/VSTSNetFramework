@@ -19,8 +19,10 @@ namespace ConsoleApp
             Console.WriteLine("*****************************************\n");
             Console.WriteLine("Seja bem vindo(a) ao Pereira CAR\n");
             Console.WriteLine("Selecione a opção desejada\n");
-            Console.WriteLine(" 1 - Fabricantes\n 2 - Modelos\n 3 - Funcionarios\n 0 - Sair");
+            Console.WriteLine(" 1 - Lista de fabricantes\n 2 - Lista de modelos\n 3 - Lista de funcionarios\n" +
+                " 4 - Adicionar um novo funcionário\n 5 - Adicionar um novo modelo\n 0 - Sair");
             string op = Console.ReadLine();
+            FuncionarioBO funcBO = new FuncionarioBO();
             switch(op)
             {
 
@@ -37,12 +39,14 @@ namespace ConsoleApp
                     break;
 
                 case "3":
-
-                    FuncionarioBO funcBO = new FuncionarioBO();
                     funcBO.ListarTodosOsFuncionariosConsole();
-
                     break;
 
+                case "4":
+                    funcBO.RecolherDadosConsole();
+                    break;
+
+                
                 case "0":
                     Console.WriteLine("Fechando o sistema...\n");
                     Console.WriteLine("-----------------------------\n");

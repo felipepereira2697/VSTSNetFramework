@@ -83,6 +83,46 @@ namespace ConsoleApp.BO
             }
             return validou;
         }
+
+        public void RecolherDadosConsole()
+        {
+            Random randomico = new Random();
+            Console.WriteLine("Legal! Vamos adicionar um novo membro a nossa equipe!\n");
+            Console.WriteLine("Vamos precisar de algumas informações básicas\n");
+            Console.WriteLine("Digite o nome do novo funcionário(a)\n");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Digite o cargo:\n");
+            string cargo = Console.ReadLine();
+            Console.WriteLine("Digite o salário para o cargo de " + cargo + "\n");
+            string salario = Console.ReadLine();
+            Console.WriteLine("Por favor, digite o CPF:\n ");
+            string cpf = Console.ReadLine();
+            string id = (randomico.Next(1, 10000)).ToString();
+            Console.WriteLine("Dia do nascimento:\n");
+            string diaNascimento = Console.ReadLine();
+            Console.WriteLine("Mês do nascimento:\n");
+            string mesNascimento = Console.ReadLine();
+            Console.WriteLine("Ano do nascimento:\n");
+            string anoNascimento = Console.ReadLine();
+
+            int anoInt = Convert.ToInt32(anoNascimento);
+            int mesInt = Convert.ToInt32(mesNascimento);
+            int diaInt = Convert.ToInt32(diaNascimento);
+            DateTime dataNascimento = new DateTime(anoInt, mesInt, diaInt);
+            DateTime dataContratacao = DateTime.Now;
+
+            bool retornou = AdicionarNovoFuncionarioViaConsole(id, nome, cpf, dataNascimento, cargo, Convert.ToInt32(salario));
+            
+            if(retornou)
+            {
+                Console.WriteLine("Seja muito bem vindo(a) " + nome + " o seu cargo de " + cargo + " já te espera!");
+            }
+            else
+            {
+                Console.WriteLine("Desculpe-nos o transtorno, favor contactar o seu administrador de sistema");
+            }
+        }
+
         public bool ValidarIdadeFuncionario(Funcionario funcionario)
         {
             DateTime dataAtual = DateTime.Now;
@@ -113,6 +153,17 @@ namespace ConsoleApp.BO
             
 
             //Aqui vamos receber uma Lista da DAO e vamos verificar se nao temos mais de uma ocorrencia de nome
+        }
+
+        public bool AdicionarNovoFuncionarioViaConsole(string id, string nome, string cpf, DateTime dataNascimento, string cargo, int salario)
+        {
+            Funcionario novoFuncionario = new Funcionario(id, nome, cpf, dataNascimento, cargo, Convert.ToInt32(salario));
+            bool retorno = AdicionarNovoFuncionario(novoFuncionario);
+            if(retorno)
+            {
+                return true;
+            }
+            return false;
         }
 
         private static bool NomeValido(string nome)
