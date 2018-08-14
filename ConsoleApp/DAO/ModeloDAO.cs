@@ -99,9 +99,7 @@ namespace ConsoleApp.DAO
             }
             if(modelo == null)
             {
-                Modelo m = new Modelo();
-                m.Nome = "";
-                return m;
+                modelo.Nome = "";
             }
             return modelo;
         }

@@ -26,7 +26,19 @@ namespace ConsoleApp.Model
         {
             this.Id = Id;
             this.Nome = Nome;
-            this.Quantidade = Quantidade <= 0 ? this.Quantidade = 0 : this.Quantidade = Quantidade ;
+            this.Quantidade = QuantidadeNegativa(this.Quantidade);
+        }
+
+        //Método de Helper
+        private static int QuantidadeNegativa(int qtd)
+        {
+            if(qtd <= 0)
+            {
+                return 0;
+            }else
+            {
+                return qtd;
+            }
         }
     }
 }
