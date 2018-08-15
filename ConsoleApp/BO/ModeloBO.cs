@@ -49,9 +49,8 @@ namespace ConsoleApp.BO
         public bool VerificarDuplicidadeModelo(Modelo modelo)
         {
             List<Modelo> todos = BuscarTodosOsModelos();
-            List<Modelo> iguais = new List<Modelo>();
             
-            iguais = todos.FindAll(x => x.Nome.Equals(modelo.Nome));
+            List<Modelo> iguais = todos.FindAll(x => x.Nome.Equals(modelo.Nome));
 
             if(iguais.Count > 1)
             {
