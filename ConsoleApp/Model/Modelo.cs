@@ -15,6 +15,8 @@ namespace ConsoleApp.Model
         [Required]
         [StringLength(255)]  
         public string Nome { get; set; }
+        [StringLength(255)]
+        public string Descricao { get; set; }
         public int Quantidade { get; set; }
         //Aqui vamos facilitar o mapeamento do Entity framework 
 

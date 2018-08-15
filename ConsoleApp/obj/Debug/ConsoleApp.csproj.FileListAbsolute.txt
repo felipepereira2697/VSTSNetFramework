@@ -17,3 +17,4 @@ C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleAp
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.PopularFuncionarios.resources
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.FuncionarioIdStringToInt.resources
 C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.FuncionarioIdString.resources
+C:\Users\Felipe\source\repos\SolutionNetFramework\ConsoleApp\obj\Debug\ConsoleApp.Migrations.DescricaoModeloFabricante.resources

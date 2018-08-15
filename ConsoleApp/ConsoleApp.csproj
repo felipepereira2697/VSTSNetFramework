@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201808080107156_FuncionarioIdString.Designer.cs">
       <DependentUpon>201808080107156_FuncionarioIdString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808150111305_DescricaoModeloFabricante.cs" />
+    <Compile Include="Migrations\201808150111305_DescricaoModeloFabricante.Designer.cs">
+      <DependentUpon>201808150111305_DescricaoModeloFabricante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Fabricante.cs" />
     <Compile Include="Model\Funcionario.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808080107156_FuncionarioIdString.resx">
       <DependentUpon>201808080107156_FuncionarioIdString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808150111305_DescricaoModeloFabricante.resx">
+      <DependentUpon>201808150111305_DescricaoModeloFabricante.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

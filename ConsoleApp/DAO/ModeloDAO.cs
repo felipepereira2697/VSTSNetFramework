@@ -44,15 +44,15 @@ namespace ConsoleApp.DAO
             return modelos;
         }
 
-        public bool Atualizar(Modelo atualizado)
+        public bool Atualizar(Modelo o)
         {
             try
             {
                 using (var context = new PereiraDbContext())
                 {
 
-                    Modelo antigo =context.Modelos.Where(m => m.Id == atualizado.Id).First();
-                    antigo.Quantidade = atualizado.Quantidade;
+                    Modelo antigo =context.Modelos.Where(m => m.Id == o.Id).First();
+                    antigo.Quantidade = o.Quantidade;
                     int salvou = context.SaveChanges();
                     if(salvou > 0)
                     {

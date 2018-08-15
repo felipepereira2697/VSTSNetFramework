@@ -30,7 +30,6 @@ namespace ConsoleApp.Model
         [Required]
         public int Salario { get; set; }
         
-
         public Funcionario()
         {
 

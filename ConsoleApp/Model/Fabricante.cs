@@ -17,6 +17,9 @@ namespace ConsoleApp.Model
         [StringLength(255)]
         public string Nome { get; set; }
         public ICollection<Modelo> Modelos { get; set; }
+        
+        [StringLength(255)]
+        public string Descricao { get; set; }
 
         public Fabricante()
         {
