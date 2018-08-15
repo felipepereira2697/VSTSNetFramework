@@ -321,7 +321,7 @@ namespace UnitTestProject
             GerenteAbaixaTetoSalarial.DataContratacao = DateTime.Now;
             GerenteAbaixaTetoSalarial.DataNascimento = new DateTime(1985, 06, 26);
             GerenteAbaixaTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
-            GerenteAbaixaTetoSalarial.Nome = "Raul Gerente Abaixa Teto Salarial Novo" + (randomico.Next(1, 10000)).ToString();
+            GerenteAbaixaTetoSalarial.Nome = "Raul Gerente Abaixa Teto Salarial Novo" + (randomico.Next(20000, 30000)).ToString();
             GerenteAbaixaTetoSalarial.Salario = 200;
 
             //Os salarios de vendedor nao devem ultrapassar os 5000
@@ -331,7 +331,7 @@ namespace UnitTestProject
             VendedorTetoSalarial.DataContratacao = DateTime.Now;
             VendedorTetoSalarial.DataNascimento = new DateTime(1998, 06, 26);
             VendedorTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
-            VendedorTetoSalarial.Nome = "Teste Vendedor Dentro do Teto Salarial" + (randomico.Next(1, 10000)).ToString();
+            VendedorTetoSalarial.Nome = "Teste Vendedor Dentro do Teto Salarial" + (randomico.Next(20000, 30000)).ToString();
             VendedorTetoSalarial.Salario = 4999;
 
             VendedorPassaTetoSalarial.Cargo = "Vendedor";
@@ -339,7 +339,7 @@ namespace UnitTestProject
             VendedorPassaTetoSalarial.DataContratacao = DateTime.Now;
             VendedorPassaTetoSalarial.DataNascimento = new DateTime(1976, 06, 13);
             VendedorPassaTetoSalarial.Id = (randomico.Next(1, 10000)).ToString();
-            VendedorPassaTetoSalarial.Nome = "Teste Vendedor Acima do Teto Salarial" + (randomico.Next(1, 10000)).ToString();
+            VendedorPassaTetoSalarial.Nome = "Teste Vendedor Acima do Teto Salarial" + (randomico.Next(20000, 30000)).ToString();
             VendedorPassaTetoSalarial.Salario = 5001;
 
             FuncionarioBO bo = new FuncionarioBO();

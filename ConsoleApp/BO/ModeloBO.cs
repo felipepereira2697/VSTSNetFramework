@@ -109,7 +109,7 @@ namespace ConsoleApp.BO
             bool existe = VerificaExistenciaModelo(modelo);
             bool qtdNegativa = VerificaQuantidadeNegativa(modelo.Quantidade);
             bool limiteDescricao = VerificaDescricao(modelo.Descricao);
-            if(existe || qtdNegativa || limiteDescricao==false)
+            if(existe || qtdNegativa || !limiteDescricao)
             {
                 return false;
             }

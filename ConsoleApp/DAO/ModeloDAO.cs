@@ -61,10 +61,11 @@ namespace ConsoleApp.DAO
                     return false;
                 }
             }
-            catch (Exception )
+            catch (Exception e )
             {
-
-                throw;
+                Console.WriteLine("Problema ao atualizar a quantidade do modelo --> "+e.Message);
+                throw e;
+                 
             }
             
 

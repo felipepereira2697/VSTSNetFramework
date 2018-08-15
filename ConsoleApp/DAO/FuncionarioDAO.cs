@@ -26,10 +26,10 @@ namespace ConsoleApp.DAO
         }
         public List<Funcionario> BuscarPorCargo(string nomeCargo)
         {
-            List<Funcionario> funcionarios = new List<Funcionario>();
+            
             using (var context = new PereiraDbContext())
             {
-                funcionarios =  context.Funcionarios.Where(c => c.Cargo.Equals(nomeCargo)).ToList();
+                List<Funcionario> funcionarios =  context.Funcionarios.Where(c => c.Cargo.Equals(nomeCargo)).ToList();
                 return funcionarios;
             }
 
