@@ -32,7 +32,7 @@ namespace ConsoleApp.BO
         public bool VerificarExistenciaFabricante(Fabricante f)
         {
             List<Fabricante> fabricantes = BuscarTodos();
-            Fabricante existente = fabricantes.Where(x => x.Nome.Equals(f.Nome)).FirstOrDefault();
+            Fabricante existente = fabricantes.FirstOrDefault(x => x.Nome.Equals(f.Nome));
             if(existente == null)
             {
                 return true;
