@@ -12,8 +12,6 @@ namespace ConsoleApp.BO
     public class FuncionarioBO
     {
         
-        //public enum Cargos { Vendedor=1, Gerente = 2 };
-        
         private readonly FuncionarioDAO dao = new FuncionarioDAO();
 
         public FuncionarioBO()
@@ -29,10 +27,8 @@ namespace ConsoleApp.BO
         public List<Funcionario> BuscarFuncionarioPorCargo(string nomeCargo)
         {
             
-            List <Funcionario> funcionarios= new List<Funcionario>();
-            
             //Ordenando pelo nome, como isso pode mudar, decidi optar por deixar na regra de negocio
-            funcionarios = dao.BuscarPorCargo(nomeCargo).OrderBy(x => x.Nome).ToList();
+            List<Funcionario> funcionarios = dao.BuscarPorCargo(nomeCargo).OrderBy(x => x.Nome).ToList();
 
             return funcionarios;
 
@@ -190,10 +186,10 @@ namespace ConsoleApp.BO
         public Funcionario BuscarFuncionarioPorNomeECargo(string nome, string cargo)
         {
             
-            List<Funcionario> resultado = new List<Funcionario>();
+            
             if (NomeValido(nome) && ValidaCargo(cargo))
             {
-                resultado = dao.BuscarPorNomeECargo(nome, cargo);
+                List<Funcionario> resultado = dao.BuscarPorNomeECargo(nome, cargo);
 
                 if (resultado.Count > 1)
                 {

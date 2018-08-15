@@ -199,7 +199,9 @@ namespace UnitTestProject
         public void DeveInserirUmNovoModeloComDescricaoQueNaoUltrapasseOs255Caracteres()
         {
 
-            Modelo ferrari = new Modelo { Nome = "Ferrari com descricao", FabricanteId = 1, Quantidade = 1001 };
+            Random randomico = new Random();
+            string idAleatorio = randomico.Next(1, 10000).ToString();
+            Modelo ferrari = new Modelo { Nome = "Ferrari com descricao"+idAleatorio, FabricanteId = 1, Quantidade = 1001 };
             ferrari.Descricao = "Lorem ipsum dolor " +
                 "sit amet, consectetur adipiscing elit. " +
                 "Donec in lobortis lorem. Pellentesque auctor," +

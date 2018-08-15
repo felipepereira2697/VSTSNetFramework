@@ -22,7 +22,7 @@ namespace ConsoleApp.BO
             if(modelo.Quantidade >= quantidadeVendida)
             {
                 modelo.Quantidade -= quantidadeVendida;
-                //atualiza o modelo dao.AtualizarQuantidadeModelo(modelo, quantidade);
+                
                 return true;
             }
 
