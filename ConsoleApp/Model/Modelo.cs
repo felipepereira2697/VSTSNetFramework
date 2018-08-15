@@ -26,7 +26,7 @@ namespace ConsoleApp.Model
         {
             this.Id = Id;
             this.Nome = Nome;
-            this.Quantidade = QuantidadeNegativa(this.Quantidade);
+            this.Quantidade = QuantidadeNegativa(Quantidade);
         }
 
         //Método de Helper
