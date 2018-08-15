@@ -95,12 +95,14 @@ namespace ConsoleApp.DAO
             Modelo modelo = new Modelo();
             using (var context = new PereiraDbContext())
             {
-                modelo = context.Modelos.Where(m => m.Nome.Equals(nome)).FirstOrDefault();
+                var modeloBuscado = context.Modelos.Where(m => m.Nome.Equals(nome)).FirstOrDefault();
+                if (modeloBuscado != null)
+                {
+                    modelo = modeloBuscado;
+                    return modelo;
+                }
             }
-            if(modelo == null)
-            {
-                modelo.Nome = "";
-            }
+            modelo.Nome = "";
             return modelo;
         }
         
