@@ -91,13 +91,25 @@ namespace ConsoleApp.BO
             }
             return false;
         }
+
+        private bool VerificaDescricao(string descricao)
+        {
+            //Verificar a quantidade de caracteres na descricao, nao pode passar os 255
+           
+            if(descricao.Length <= 255 && descricao.Length > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
         public bool AdicionarNovoModelo(Modelo modelo)
         {
             //verificar se o modelo ja existe e se quantidade que será inserida nao é negativa
             bool existe = VerificaExistenciaModelo(modelo);
             bool qtdNegativa = VerificaQuantidadeNegativa(modelo.Quantidade);
-
-            if(existe || qtdNegativa)
+            bool limiteDescricao = VerificaDescricao(modelo.Descricao);
+            if(existe || qtdNegativa || limiteDescricao==false)
             {
                 return false;
             }

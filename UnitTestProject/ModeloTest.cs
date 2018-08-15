@@ -107,7 +107,13 @@ namespace UnitTestProject
 
             Modelo m = dao.BuscarPorNome("Buggati Veyron");
 
-            bool adicionou = bo.AdicionarNovoModelo(dao.BuscarPorNome("Buggati Veyron"));
+            m.Descricao = "Lorem ipsum dolor " +
+                "sit amet, consectetur adipiscing elit. " +
+                "Donec in lobortis lorem. Pellentesque auctor," +
+                " mauris non hendrerit malesuada, nisl libero rhoncus orci, nec tempus est augue ut dui. " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  ";
+
+            bool adicionou = bo.AdicionarNovoModelo(m);
 
             Assert.IsFalse(adicionou);
 
@@ -187,6 +193,37 @@ namespace UnitTestProject
 
             Assert.IsTrue(retorno);
 
+        }
+
+        [TestMethod]
+        public void DeveInserirUmNovoModeloComDescricaoQueNaoUltrapasseOs255Caracteres()
+        {
+
+            Modelo ferrari = new Modelo { Nome = "Ferrari com descricao", FabricanteId = 1, Quantidade = 1001 };
+            ferrari.Descricao = "Lorem ipsum dolor " +
+                "sit amet, consectetur adipiscing elit. " +
+                "Donec in lobortis lorem. Pellentesque auctor," +
+                " mauris non hendrerit malesuada, nisl libero rhoncus orci, nec tempus est augue ut dui. " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  ";
+            ModeloBO bo = new ModeloBO();
+            bool adicionou = bo.AdicionarNovoModelo(ferrari);
+
+
+            Modelo ferrari2 = new Modelo { Nome = "Ferrari com descricao NAO VAI ADICIONAR", FabricanteId = 1, Quantidade = 1001 };
+            ferrari.Descricao = "Lorem ipsum dolor " +
+                "sit amet, consectetur adipiscing elit. " +
+                "Donec in lobortis lorem. Pellentesque auctor," +
+                " mauris non hendrerit malesuada, nisl libero rhoncus orci, nec tempus est augue ut dui. " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  " +
+                "Vivamus nec euismod erat. Pellentesque finibus diam ac euismod  ";
+            bool naoAdicionou = bo.AdicionarNovoModelo(ferrari);
+
+            
+            Assert.IsTrue(adicionou);
+            Assert.IsFalse(naoAdicionou);
         }
 
 
